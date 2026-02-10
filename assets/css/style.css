@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f7f3;
+  color: #2f2f2f;
+}
+
+.cover {
+  height: 100vh;
+  background: url('../img/cover.jpg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+
+.cover .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.cover * {
+  position: relative;
+}
+
+.cover h1 {
+  font-family: 'Amiri', serif;
+  font-size: 2.5rem;
+}
+
+.cover button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #c8a95e;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.ayat {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  background: #efe9dc;
+}
+
+.story-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.story-card {
+  min-width: 250px;
+  scroll-snap-align: center;
+}
+
+.story-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: none;
+}

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* background */
+            --bg-main: #fdfaf4;
+            --bg-soft: #efe9dc;
+            --bg-section: #f9f7f3;
+
+            /* accent */
+            --accent: #c6a75e;
+
+            /* text */
+            --text-dark: #2f2f2f;
+        }
+
+        [data-theme="gold"] {
+            --bg: var(--bg-main);
+            --gold: var(--accent);
+            --dark: var(--text-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ===== COVER ===== */
+        .cover {
+            height: 100vh;
+            background: url('cover.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .cover * {
+            position: relative;
+        }
+
+        .cover h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+        }
+
+        .cover h2 {
+            font-size: 1.6rem;
+            margin: 10px 0;
+        }
+
+        .cover button {
+            margin-top: 25px;
+            padding: 12px 32px;
+            background: var(--gold);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* ===== SECTION ===== */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease;
+        }
+
+        .fade.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ===== AYAT ===== */
+        .ayat {
+            background: #efe9dc;
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+        }
+
+        /* ===== COUPLE ===== */
+        .couple img {
+            width: 180px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .couple h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+        }
+
+        /* ===== COUNTDOWN ===== */
+        .countdown-box {
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        /* ===== STORY ===== */
+        .story-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px;
+        }
+
+        .story-card {
+            min-width: 260px;
+            scroll-snap-align: center;
+        }
+
+        .story-card img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        /* ===== RSVP ===== */
+        .rsvp form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .rsvp input,
+        .rsvp textarea,
+        .rsvp select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* =====================
+   THEME DEFINITIONS
+===================== */
+
+        /* Tema Islam Gold */
+        [data-theme="gold"] {
+            --bg-main: #fdfaf4;
+            --bg-soft: #efe9dc;
+            --bg-section: #f9f7f3;
+            --accent: #c6a75e;
+            --text-dark: #2f2f2f;
+        }
+
+        /* Tema Hijau Islami */
+        [data-theme="green"] {
+            --bg-main: #f4faf6;
+            --bg-soft: #e6f1ec;
+            --bg-section: #f9fdfb;
+            --accent: #4f8f6a;
+            --text-dark: #1f2f28;
+        }
+
+        /* Tema Dark Islami */
+        [data-theme="dark"] {
+            --bg-main: #1b1b1b;
+            --bg-soft: #222;
+            --bg-section: #2a2a2a;
+            --accent: #c6a75e;
+            --text-dark: #f0f0f0;
+        }
+
+
+        .rsvp button {
+            background: var(--gold);
+            border: none;
+            color: white;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .theme-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 8px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            z-index: 99;
+        }
+
+        .theme-switcher button {
+            border: none;
+            background: var(--accent);
+            color: white;
+            padding: 6px 12px;
+            margin: 2px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+
+<body data-theme="gold">
+    <div class="theme-switcher">
+        <button onclick="setTheme('gold')">Gold</button>
+        <button onclick="setTheme('green')">Green</button>
+        <button onclick="setTheme('dark')">Dark</button>
+    </div>
+
+    <audio id="bgm" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- COVER -->
+    <div class="cover">
+        <h1>Undangan Pernikahan</h1>
+        <h2>Chandro & Chrystin</h2>
+        <button onclick="openInvite()">Buka Undangan</button>
+    </div>
+
+    <main style="display:none">
+
+
+
+        <section class="couple fade">
+            <img src="assets/img/perkembangan AI.jpg">
+            <h3>Chandro Pardede</h3>
+            <p>Putra Bpk. Nelson Pardede & Ibu Siti Suasa Siahaan</p>
+            <h3>Chrystin Yesica Siahaan</h3>
+            <p>Putri Bpk. S. Siahaan & Ibu S. Bakkara</p>
+        </section>
+
+        <section class="countdown fade">
+            <h2>Menuju Hari Bahagia</h2>
+            <div class="countdown-box" id="timer"></div>
+        </section>
+
+        <section class="fade">
+            <h2>Cerita Kami</h2>
+            <div class="story-track">
+                <div class="story-card"><img src="assets/img/nvidia.jpg">
+                    <p>Awal Bertemu</p>
+                </div>
+                <div class="story-card"><img src="assets/img/perkembangan AI.jpg">
+                    <p>Lamaran</p>
+                </div>
+                <div class="story-card"><img src="assets/img/langkah2.png">
+                    <p>Menuju Halal</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade">
+            <h2>Galeri</h2>
+            <div class="gallery">
+                <img src="assets/img/nvidia.jpg" onclick="showImg(this)">
+                <img src="assets/img/perkembangan AI.jpg" onclick="showImg(this)">
+                <img src="assets/img/langkah2.png" onclick="showImg(this)">
+            </div>
+        </section>
+        <section class="location fade">
+            <h2>Lokasi Acara</h2>
+
+            <div class="event-box">
+                <h3>Akad Nikah</h3>
+                <p>
+                    Masjid Al-Ikhlas<br>
+                    Jl. Sudirman No. 123<br>
+                    Medan, Sumatera Utara
+                </p>
+                <a href="https://maps.google.com/?q=Masjid+Al+Ikhlas+Medan" target="_blank" class="map-btn">
+                    Lihat di Google Maps
+                </a>
+            </div>
+
+            <div class="event-box">
+                <h3>Resepsi</h3>
+                <p>
+                    Gedung Serbaguna Al-Hikmah<br>
+                    Jl. Gatot Subroto No. 45<br>
+                    Medan
+                </p>
+                <a href="https://maps.google.com/?q=Gedung+Serbaguna+Al+Hikmah+Medan" target="_blank" class="map-btn">
+                    Lihat di Google Maps
+                </a>
+            </div>
+        </section>
+
+
+        <section class="rsvp fade">
+            <h2>RSVP</h2>
+            <form>
+                <input placeholder="Nama">
+                <select>
+                    <option>Hadir</option>
+                    <option>Tidak Hadir</option>
+                </select>
+                <textarea placeholder="Ucapan"></textarea>
+                <button>Kirim</button>
+            </form>
+        </section>
+
+    </main>
+
+    <div class="lightbox" onclick="this.style.display='none'">
+        <img>
+    </div>
+
+    <script>
+        function openInvite() {
+            document.querySelector('.cover').style.display = 'none';
+            document.querySelector('main').style.display = 'block';
+            document.getElementById('bgm').play();
+        }
+
+        function showImg(el) {
+            const lb = document.querySelector('.lightbox');
+            lb.style.display = 'flex';
+            lb.querySelector('img').src = el.src;
+        }
+
+        // scroll animation
+        const faders = document.querySelectorAll('.fade');
+        window.addEventListener('scroll', () => {
+            faders.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('show');
+                }
+            });
+        });
+
+        // countdown
+        const target = new Date('2026-08-20').getTime();
+        setInterval(() => {
+            const now = Date.now();
+            const d = Math.floor((target - now) / (1000 * 60 * 60 * 24));
+            document.getElementById('timer').innerText = d + ' Hari Lagi';
+        }, 1000);
+    </script>
+
+</body>
+
+</html>

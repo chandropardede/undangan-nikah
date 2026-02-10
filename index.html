@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Undangan Pernikahan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- COVER -->
+    <section id="cover">
+        <p>Kepada Yth.</p>
+        <h2 id="namaTamu">Tamu Undangan</h2>
+
+        <h1>Andi & Sinta</h1>
+        <button id="btnBuka">Buka Undangan</button>
+    </section>
+
+    <!-- ISI UNDANGAN -->
+    <section id="isi" class="hidden">
+        <h1 id="namaPengantin"></h1>
+        <p id="tanggalAcara"></p>
+
+        <h2>Acara Pernikahan</h2>
+        <p>Sabtu, 20 Juli 2026</p>
+        <p>Pukul 10.00 WIB</p>
+        <div class="section">
+            <h2>Konfirmasi Kehadiran</h2>
+
+            <form id="rsvpForm">
+                <input type="text" id="rsvpNama" placeholder="Nama" required>
+                <select id="rsvpStatus" required>
+                    <option value="">Kehadiran</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
+                </select>
+                <textarea id="rsvpPesan" placeholder="Pesan"></textarea>
+
+                <button type="submit">Kirim RSVP</button>
+            </form>
+        </div>
+        <div class="section reveal">
+            <h2>Galeri Kami</h2>
+
+            <div class="gallery">
+                <div class="photo">
+                    <img src="assets/img/nvidia.jpg" alt="Foto 1">
+                </div>
+                <div class="photo">
+                    <img src="assets/img/logoiakn.png" alt="Foto 2">
+                </div>
+                <div class="photo">
+                    <img src="assets/img/perkembangan AI.jpg" alt="Foto 3">
+                </div>
+                <div class="hero-photo reveal">
+                    <img src="assets/img/langkah2.png">
+                </div>
+
+            </div>
+        </div>
+        <div class="section reveal">
+            <h2>Cerita Kami</h2>
+
+            <div class="gallery">
+                <img src="assets/img/nvidia.jpg" loading="lazy" class="gallery-img">
+                <img src="assets/img/logoiakn.png" loading="lazy" class="gallery-img">
+                <img src="assets/img/perkembangan AI.jpg" loading="lazy" class="gallery-img">
+                <img src="assets/img/langkah2.png" loading="lazy" class="gallery-img">
+                <img src="assets/img/langkah2.png" loading="lazy" class="gallery-img">
+            </div>
+        </div>
+
+        <div class="section story">
+            <h2>Cerita Kami</h2>
+
+            <div class="story-item reveal left">
+                <img src="assets/img/nvidia.jpg">
+                <p>Semua berawal dari pertemuan sederhana.</p>
+            </div>
+
+            <div class="story-item reveal right">
+                <img src="assets/img/logoiakn.png">
+                <p>Waktu mempertemukan kami lebih sering.</p>
+            </div>
+
+            <div class="story-item reveal zoom">
+                <img src="assets/img/perkembangan AI.jpg">
+                <p>Tawa, cerita, dan rasa yang tumbuh.</p>
+            </div>
+
+            <div class="story-item reveal left">
+                <img src="assets/img/langkah2.png">
+                <p>Kami belajar berjalan bersama.</p>
+            </div>
+
+            <div class="story-item reveal zoom">
+                <img src="assets/img/langkah2.png">
+                <p>Dan kini, kami siap melangkah ke masa depan.</p>
+            </div>
+        </div>
+
+
+        <!-- LIGHTBOX -->
+        <div id="lightbox">
+            <img id="lightbox-img">
+        </div>
+
+
+
+
+        <div class="section">
+            <h2>Menuju Hari Bahagia</h2>
+            <p id="countdown">Loading...</p>
+        </div>
+
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
